@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flashcards para Concurso de Delegado</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+        }
+        h1 {
+            color: #333;
+        }
+        .flashcard {
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px auto;
+            max-width: 600px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+        .flashcard:hover {
+            transform: scale(1.05);
+        }
+        .flashcard.flipped {
+            background-color: #e8f5e8;
+        }
+        .question, .answer {
+            display: none;
+        }
+        .flashcard.show-question .question {
+            display: block;
+        }
+        .flashcard.show-answer .answer {
+            display: block;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin: 10px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <h1>Flashcards para Concurso de Delegado: Resumos como Fofoca</h1>
+    <p>Clique no cartão para ver a pergunta, depois clique novamente para a resposta (resumida de forma leve e narrativa, como uma fofoca).</p>
+
+    <div id="flashcards">
+        <!-- Flashcard 1: Homicídio -->
+        <div class="flashcard" onclick="flipCard(this)">
+            <div class="question">O que é homicídio simples no Código Penal?</div>
+            <div class="answer">Ah, o homicídio simples é aquela briga feia que deu errado, sabe? Alguém mata outro sem intenção premeditada, só no calor do momento. Pena de 6 a 20 anos, mas se for qualificado, como por motivo torpe ou com crueldade, vira homicídio qualificado e a pena sobe para 12 a 30 anos. É como aquela fofoca de vizinhos que virou tragédia!</div>
+        </div>
+
+        <!-- Flashcard 2: Roubo -->
+        <div class="flashcard" onclick="flipCard(this)">
+            <div class="question">Diferença entre roubo e furto?</div>
+            <div class="answer">Roubo é furto com violência ou ameaça, tipo aquele assalto na esquina que todo mundo comenta. Pena de 4 a 10 anos, e se for qualificado, como com emprego de arma, pode chegar a 15 anos. Furto é só pegar sem ninguém ver, pena menor. É como a diferença entre uma festa discreta e uma bagunça com polícia!</div>
+        </div>
+
+        <!-- Flashcard 3: Drogas -->
+        <div class="flashcard" onclick="flipCard(this)">
+            <div class="question">O que diz a Lei de Drogas sobre tráfico?</div>
+            <div class="answer">Tráfico de drogas é aquela operação clandestina que movimenta milhões, né? Pena de 5 a 15 anos, dependendo da quantidade e se for reincidente. Mas se for usuário, é só advertência ou tratamento. É como aquela rede de fofocas sobre quem vende o que no bairro!</div>
+        </div>
+
+        <!-- Flashcard 4: Constituição Federal -->
+        <div class="flashcard" onclick="flipCard(this)">
+            <div class="question">O que é habeas corpus?</div>
+            <div class="answer">Habeas corpus é o remédio jurídico para quem está preso injustamente, tipo aquela história de alguém inocente na cadeia. Garante a liberdade de locomoção contra ilegalidade ou abuso. É como um escândalo jurídico que vira manchete!</div>
+        </div>
+
+        <!-- Flashcard 5: Criminologia -->
+        <div class="flashcard" onclick="flipCard(this)">
+            <div class="question">O que é teoria da rotulagem?</div>
+            <div class="answer">A teoria da rotulagem diz que o crime é o que a sociedade chama assim, sabe? Alguém é rotulado como criminoso e acaba se comportando como tal. É como aquela fofoca que transforma uma pessoa comum em vilã da história!</div>
+        </div>
+    </div>
+
+    <button onclick="nextCard()">Próximo Cartão</button>
+    <button onclick="resetCards()">Reiniciar</button>
+
+    <script>
+        let currentCardIndex = 0;
+        const cards = document.querySelectorAll('.flashcard');
+
+        function flipCard(card) {
+            card.classList.toggle('show-question');
+            card.classList.toggle('show-answer');
+            card.classList.toggle('flipped');
+        }
+
+        function nextCard() {
+            cards.forEach(card => {
+                card.classList.remove('show-question', 'show-answer', 'flipped');
+            });
+            currentCardIndex = (currentCardIndex + 1) % cards.length;
+            // Opcional: destacar o próximo, mas por simplicidade, apenas reseta
+        }
+
+        function resetCards() {
+            cards.forEach(card => {
+                card.classList.remove('show-question', 'show-answer', 'flipped');
+            });
+            currentCardIndex = 0;
+        }
+    </script>
+</body>
+</html>
